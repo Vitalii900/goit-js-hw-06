@@ -12,3 +12,16 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+const galleryRef = document.querySelector('.gallery');
+
+const makeImageList = ({ url, alt }) => {
+  return `<li><img class="gallery__image" srs = "${ url }" alt = "${ alt }"></img></li>`;
+};
+
+
+const elements = images.map(makeImageList).join("");
+
+galleryRef.insertAdjacentHTML("beforeend", elements);
+
+// Не розумію чому картинки не підгружаються...
