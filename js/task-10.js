@@ -4,10 +4,12 @@ function getRandomHexColor() {
 
 const boxesRef = document.querySelector('#boxes');
 
+const inputEl = document.querySelector('input');
+
 const firstDivBox = document.createElement('div');
 firstDivBox.style.backgroundColor = getRandomHexColor();
-firstDivBox.style.width = '30';
-firstDivBox.style.height = '30';
+firstDivBox.style.width = '30px';
+firstDivBox.style.height = '30px';
 
 const addNewDivBoxes = [];
 
@@ -25,20 +27,22 @@ function createBoxes(amount) {
   };
 };
 
-let counter = 0;
+// let counter = 0;
 
-function getAmountOfDiv(event) {
-  counter = Number(event.currentTarget.value);
-  // console.log(counter)
-}
+// function getAmountOfDiv(event) {
+//   counter = Number(event.currentTarget.value);
+//   // console.log(counter)
+// }
 
 const inputRef = document.querySelector('.number');
 const buttonCreateRef = document.querySelector('[data-create]');
 const buttonDestroyRef = document.querySelector('[data-destroy]');
 
 
-buttonCreateRef.addEventListener('click', createBoxes(counter));
+buttonCreateRef.addEventListener('click', createBoxes(inputEl.value));
 
-inputRef.addEventListener('input', getAmountOfDiv);
+boxesRef.append(...addNewDivBoxes);
+
+// inputRef.addEventListener('input', getAmountOfDiv);
 
 // Не вийшло в мене зробити це завдання, можливо ви мені покажете рішення щоб я розібрався!!!
