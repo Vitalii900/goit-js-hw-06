@@ -6,8 +6,8 @@ const boxesRef = document.querySelector('.boxes');
 
 const firstDivBox = document.createElement('div');
 firstDivBox.style.backgroundColor = getRandomHexColor();
-firstDivBox.style.width = '30px';
-firstDivBox.style.height = '30px';
+firstDivBox.style.width = '30';
+firstDivBox.style.height = '30';
 
 const addNewDivBoxes = [];
 
@@ -19,8 +19,8 @@ function createBoxes(amount) {
   for (let i = 0; i <= amount; i += 1) {
     const newDiv = document.createElement('div');
     newDiv.style.backgroundColor = getRandomHexColor();
-    newDiv.style.width = `${firstDivBox.style.width} + 10px`;
-    newDiv.style.height = `${firstDivBox.style.height} + 10px`;
+    newDiv.style.width = `${firstDivBox.style.width} + 10`;
+    newDiv.style.height = `${firstDivBox.style.height} + 10`;
     addNewDivBoxes.push(newDiv);
   };
 };
@@ -28,7 +28,7 @@ function createBoxes(amount) {
 let counter = 0;
 
 function getAmountOfDiv(event) {
-  counter = event.currentTarget.value;
+  counter = Number(event.currentTarget.value);
   // console.log(counter)
 }
 
