@@ -6,26 +6,45 @@ const boxesRef = document.querySelector('#boxes');
 
 const inputEl = document.querySelector('input');
 
-const firstDivBox = document.createElement('div');
-firstDivBox.style.backgroundColor = getRandomHexColor();
-firstDivBox.style.width = '30px';
-firstDivBox.style.height = '30px';
+let divDimension = 30;
 
-const addNewDivBoxes = [];
+let addNewDivBoxes = [];
 
 function createBoxes() {
   // console.log(Number(inputEl.value))
-  if (addNewDivBoxes === []) {
-    addNewDivBoxes.push(firstDivBox);
+  if (Number(inputEl.value) === 0) {
+    return;
   };
 
-  for (let i = 0; i <= Number(inputEl.value); i += 1) {
+  const firstDivBox = document.createElement('div');
+  firstDivBox.style.backgroundColor = getRandomHexColor();
+  firstDivBox.style.width = divDimension + 'px';
+  firstDivBox.style.height = divDimension + 'px';
+  firstDivBox.classList.add('delete');
+
+  addNewDivBoxes.push(firstDivBox);
+
+
+  for (let i = 1; i < Number(inputEl.value); i += 1) {
     const newDiv = document.createElement('div');
     newDiv.style.backgroundColor = getRandomHexColor();
-    newDiv.style.width = `${firstDivBox.style.width} + 10 * ${[i]}`;
-    newDiv.style.height = `${firstDivBox.style.height} + 10 * ${[i]}`;
+    newDiv.style.width = (divDimension + 10 * i) + 'px';
+    newDiv.style.height = (divDimension + 10 * i) + 'px';
+    newDiv.classList.add('delete');
     addNewDivBoxes.push(newDiv);
   };
+
+  boxesRef.append(...addNewDivBoxes);
+};
+
+function clearAll() {
+  addNewDivBoxes = [];
+  for (let i = 1; i <= Number(inputEl.value); i += 1) {
+    const newDivBoxesToRemove = document.querySelector('.delete');
+    newDivBoxesToRemove.remove();
+    location.reload();
+  };
+  
 };
 
 const inputRef = document.querySelector('.number');
@@ -35,6 +54,5 @@ const buttonDestroyRef = document.querySelector('[data-destroy]');
 
 buttonCreateRef.addEventListener('click', createBoxes);
 
-boxesRef.append(...addNewDivBoxes);
+buttonDestroyRef.addEventListener('click', clearAll);
 
-// Не вийшло в мене зробити це завдання, можливо ви мені покажете рішення щоб я розібрався!!!
