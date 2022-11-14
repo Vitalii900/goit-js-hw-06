@@ -23,5 +23,3 @@ const makeImageList = ({ url, alt }) => {
 const elements = images.map(makeImageList).join("");
 
 galleryRef.insertAdjacentHTML("beforeend", elements);
-
-// Не розумію чому картинки не підгружаються...
